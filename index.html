@@ -541,6 +541,17 @@
 
 
     document.addEventListener('keydown', function(e) {
+        if (e.keyCode == 82 && (e.ctrlKey || e.metaKey) && e.shiftKey) {
+            console.log("refresh");
+            window.location.hash = "";
+            editor.setValue("");
+            update(editor);
+            editor.focus();
+
+            e.preventDefault();
+            return false;
+        }
+
         if (e.keyCode == 83 && (e.ctrlKey || e.metaKey)) {
             e.shiftKey ? showMenu() : saveAsMarkdown();
 
